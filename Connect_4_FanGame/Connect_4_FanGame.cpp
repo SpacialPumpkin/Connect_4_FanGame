@@ -3,7 +3,8 @@
 //This project is based on the original game by Hasbro.
 #include <iostream>
 
-int main()
+//prints the introduction to the game
+void printIntro()
 {
     std::cout << "Connect 4 was published by Milton Bradley / Hasbro." << std::endl;
     std::cout << "Connect 4 and all related characters are trademarks of Hasbro." << std::endl;
@@ -11,9 +12,36 @@ int main()
     std::cout << "This Fan Game is based on the original game by Hasbro." << std::endl;
     std::cout << std::endl;
     std::cout << "Welcome! Let's get started." << std::endl;
+}
+
+//prints the top row of the game board (Column IDs)
+void printGameBoardTop(int Columns)
+{
+    std::cout << " ";
+    //if <= 10 Columns, create ID rows with 2 char spacing
+    if (Columns <= 10)
+    {
+        for (int i = 1; i <= Columns; i++)
+        {std::cout << i << "  ";}
+    }
+    //if More than 10 Columns, create ID row with adjusted spacing for IDs after #9.
+    else
+    {
+        for (int i = 1; i < 10; i++)
+        {std::cout << i << "  ";}
+        for (int i = 10; i <= Columns; i++)
+        {std::cout << i << " ";}
+    }
+    std::cout << std::endl;
+}
+
+int main()
+{
+    printIntro();
+
     //BOARD VARIABLES
-    const int Columns = 7; //how many Columns
-    const int Rows = 6; //how many Rows
+    const int Columns = 10; //how many Columns
+    const int Rows = 10; //how many Rows
     char Board[Rows][Columns]; //2D Array for the Board
     int WinCheckCount = 4; //how many Pieces have to be the same to Trigger a Win
 
@@ -41,41 +69,15 @@ int main()
 
         //increment playerTurn for next player to choose their Piece.
         if (playerTurn < totalPlayers)
-        {
-            playerTurn++;
-        }
+        {playerTurn++;}
         else if (playerTurn == totalPlayers)
-        {
-            playerTurn = 0;
-        }
+        {playerTurn = 0;}
     }
 
     //START THE GAME LOOP
     while (1)
     {
-        //Print Column IDs row
-        std::cout << " ";
-        //if <= 10 Columns, create ID rows with 2 char spacing
-        if (Columns <= 10)
-        {
-            for (int i = 1; i <= Columns; i++)
-            {
-                std::cout << i << "  ";
-            }
-        }
-        //if More than 10 Columns, create ID row with adjusted spacing for IDs after #9.
-        else
-        {
-            for (int i = 1; i < 10; i++)
-            {
-                std::cout << i << "  ";
-            }
-            for (int i = 10; i <= Columns; i++)
-            {
-                std::cout << i << " ";
-            }
-        }
-        std::cout << std::endl;
+        printGameBoardTop(Columns);
 
         //initialize and print
         for (int CurrRow = 0; CurrRow < Rows; CurrRow++)
@@ -84,9 +86,7 @@ int main()
             {
                 //initialize the Board's 2D array during the first run-through (With space chars).
                 if (playerTurn == 0)
-                {
-                    Board[CurrRow][CurrCol] = ' ';
-                }
+                {Board[CurrRow][CurrCol] = ' ';}
 
                 //Print that board's cell.
                 std::cout << "[" << Board[CurrRow][CurrCol] << "]";
@@ -231,18 +231,14 @@ int main()
                 //left side of header
 
                 for (int i = 0; i <= Columns / 1.6; i++)
-                {
-                    std::cout << "::";
-                }
+                {std::cout << "::";}
 
                 //GAME OVER
                 std::cout << "Game Over!";
 
                 //right side of header
                 for (int i = 0; i <= Columns / 1.6; i++)
-                {
-                    std::cout << "::";
-                }
+                {std::cout << "::";}
 
                 std::cout << std::endl;
 
@@ -260,13 +256,9 @@ int main()
 
                 //Next Player's Turn
                 if (playerTurn < totalPlayers)
-                {
-                    playerTurn++;
-                }
+                {playerTurn++;}
                 else if (playerTurn == totalPlayers)
-                {
-                    playerTurn = 1;
-                }
+                {playerTurn = 1;}
             }
         }
 
