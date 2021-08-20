@@ -1,6 +1,7 @@
-V1.0.0.1 Release Notes
+V1.0.1 Release Notes
 
-• Updated code indentation.
+• Added CHANGELOG.txt
+• Updated code indentation
 • Organized 2 areas of code that print text into their own functions:
     • void printIntro()
     • void printGameBoardTop(int Columns)

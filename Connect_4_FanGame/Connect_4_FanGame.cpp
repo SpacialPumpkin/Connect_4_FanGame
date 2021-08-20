@@ -40,8 +40,8 @@ int main()
     printIntro();
 
     //BOARD VARIABLES
-    const int Columns = 10; //how many Columns
-    const int Rows = 10; //how many Rows
+    const int Columns = 7; //how many Columns
+    const int Rows = 6; //how many Rows
     char Board[Rows][Columns]; //2D Array for the Board
     int WinCheckCount = 4; //how many Pieces have to be the same to Trigger a Win
 
